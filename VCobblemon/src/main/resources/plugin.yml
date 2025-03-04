@@ -1,0 +1,11 @@
+name: ${rootProject.name}
+main: ${rootProject.group}
+version: ${rootProject.version}
+api-version: 1.21
+depend:
+  - FICore
+  - CobblemonBukkitEvent
+commands:
+  pokeclear:
+    description: pokeclear
+    aliases: [pokeclear]

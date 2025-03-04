@@ -1,0 +1,62 @@
+plugins {
+    id 'java'
+}
+
+group = 'lt.pokeclear.Main'
+version = '1.7-REMASTERED'
+
+
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            name = 'spigotmc-repo'
+            url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+        }
+        maven {
+            allowInsecureProtocol = true
+            url "http://server.pokemtd.top:31647/snapshots"
+        }
+        maven {
+            url = 'https://repo.minebench.de/'
+        }
+    }
+
+    dependencies {
+        compileOnly 'me.clip:placeholderapi:2.10.3'
+
+        compileOnly 'me.fullidle.ficore:FICore:1.2.6'
+
+        compileOnly 'org.projectlombok:lombok:1.18.30'
+        annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    }
+    if (project.name != 'common') {
+        var commonProject = project(':common') as Project
+
+        dependencies {
+            implementation commonProject
+        }
+
+        sourceSets {
+            main {
+                java.srcDirs += commonProject.sourceSets.main.java.srcDirs
+                resources.srcDirs += commonProject.sourceSets.main.resources.srcDirs
+            }
+        }
+    }
+
+    processResources {
+        filteringCharset 'UTF-8'
+        filesMatching('plugin.yml') {
+            expand project.properties
+        }
+    }
+
+    jar {
+        archiveBaseName = "${rootProject.name}-${project.name}"
+        version = rootProject.version
+    }
+}

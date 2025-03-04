@@ -1,0 +1,9 @@
+name: ${rootProject.name}
+main: ${rootProject.group}
+version: ${rootProject.version}
+depend:
+  - FICore
+commands:
+  pokeclear:
+    description: pokeclear
+    aliases: [pokeclear]
