@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class PokeClear<SPECIES, POKEMON, POKE_ENTITY> extends JavaPlugin {
+    public static PokeClear<?,?,?> INSTANCE;
+
     public NormalClear<SPECIES, POKEMON, POKE_ENTITY> normalClear;
 
     public WaitClear<SPECIES, POKEMON, POKE_ENTITY> waitClear;
@@ -25,6 +27,10 @@ public abstract class PokeClear<SPECIES, POKEMON, POKE_ENTITY> extends JavaPlugi
     public List<String> ultrabeasts = new ArrayList<>();
 
     public abstract PokeClearAPI<SPECIES, POKEMON, POKE_ENTITY> getApi();
+
+    public PokeClear(){
+        INSTANCE = this;
+    }
 
     public void onEnable() {
         saveDefaultConfig();

@@ -1,6 +1,7 @@
 package lt.pokeclear.common.laotou;
 
 import lt.pokeclear.common.api.PokeClearAPI;
+import lt.pokeclear.common.api.enums.MessageType;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
@@ -23,6 +24,8 @@ public class NormalClear<SPECIES, POKEMON, POKE_ENTITY> {
 
     boolean canDeSpawn;
 
+    MessageType messageType;
+
     Map<Integer, String> msg = new HashMap<>();
 
     public NormalClear(PokeClear<SPECIES, POKEMON, POKE_ENTITY> INSTANCE) {
@@ -35,7 +38,7 @@ public class NormalClear<SPECIES, POKEMON, POKE_ENTITY> {
             } else {
                 this.time--;
                 if (this.msg.containsKey(this.time) && this.time != 0)
-                    Bukkit.getServer().broadcastMessage(this.msg.get(this.time));
+                    messageType.sendMessage(this.msg.get(this.time));
             }
         }, 20L, 20L);
         INSTANCE.getLogger().info("NormalClear");
@@ -48,6 +51,7 @@ public class NormalClear<SPECIES, POKEMON, POKE_ENTITY> {
         this.shiny = this.INSTANCE.getConfig().getBoolean("normal.shiny");
         this.boss = this.INSTANCE.getConfig().getBoolean("normal.boss");
         this.canDeSpawn = this.INSTANCE.getConfig().getBoolean("normal.canDeSpawn");
+        this.messageType = MessageType.valueOf(this.INSTANCE.getConfig().getString("normal.message-type"));
         this.INSTANCE.getConfig().getConfigurationSection("normal.message").getKeys(false).forEach(it -> {
             try {
                 this.msg.put(Integer.parseInt(it), this.INSTANCE.getConfig().getString("normal.message." + it).replace('&', '§'));
@@ -88,6 +92,6 @@ public class NormalClear<SPECIES, POKEMON, POKE_ENTITY> {
                     }
                 }
         }
-        Bukkit.getServer().broadcastMessage(this.msg.get(0).replace("%num%", String.valueOf(sum)));
+        messageType.sendMessage(this.msg.get(0).replace("%num%", String.valueOf(sum)));
     }
 }

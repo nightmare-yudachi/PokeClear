@@ -1,10 +1,10 @@
 package lt.pokeclear.common.laotou;
 
 import lt.pokeclear.common.api.PokeClearAPI;
+import lt.pokeclear.common.api.enums.MessageType;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
-import org.bukkit.plugin.Plugin;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +26,8 @@ public class WaitClear<SPECIES, POKEMON, POKE_ENTITY> {
     boolean boss;
 
     boolean canDeSpawn;
+
+    MessageType messageType;
 
     Map<Integer, String> msg = new HashMap<>();
 
@@ -58,14 +60,14 @@ public class WaitClear<SPECIES, POKEMON, POKE_ENTITY> {
     public WaitClear(PokeClear<SPECIES, POKEMON, POKE_ENTITY> INSTANCE) {
         this.INSTANCE = INSTANCE;
         load();
-        INSTANCE.getServer().getScheduler().scheduleSyncRepeatingTask((Plugin) INSTANCE, () -> {
+        INSTANCE.getServer().getScheduler().scheduleSyncRepeatingTask(INSTANCE, () -> {
             if (this.time <= 0) {
                 clearPokemon();
                 this.time = this.time_;
             } else {
                 this.time--;
                 if (this.msg.containsKey(this.time) && this.time != 0)
-                    Bukkit.getServer().broadcastMessage(this.msg.get(this.time));
+                    messageType.sendMessage(this.msg.get(this.time));
             }
         },20L, 20L);
         INSTANCE.getLogger().info("WaitClear");
@@ -108,6 +110,7 @@ public class WaitClear<SPECIES, POKEMON, POKE_ENTITY> {
         this.shiny = this.INSTANCE.getConfig().getBoolean("wait.shiny");
         this.boss = this.INSTANCE.getConfig().getBoolean("wait.boss");
         this.canDeSpawn = this.INSTANCE.getConfig().getBoolean("wait.canDeSpawn");
+        this.messageType = MessageType.valueOf(this.INSTANCE.getConfig().getString("wait.message-type"));
         this.INSTANCE.getConfig().getConfigurationSection("wait.message").getKeys(false).forEach(it -> {
             try {
                 this.msg.put(Integer.parseInt(it), this.INSTANCE.getConfig().getString("wait.message." + it).replace('&','§'));
