@@ -42,7 +42,6 @@ public abstract class PokeClear<SPECIES, POKEMON, POKE_ENTITY> extends JavaPlugi
         } else {
             this.waitClear = new WaitClear<>(this);
         }
-        Bukkit.getScheduler().runTaskAsynchronously(this, AD::new);
 
         for (SPECIES value : this.getApi().allSpecies()) {
             if (this.getApi().isUltraBeast(value)) {
@@ -56,6 +55,7 @@ public abstract class PokeClear<SPECIES, POKEMON, POKE_ENTITY> extends JavaPlugi
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender.isOp() && args.length == 1 && args[0].equalsIgnoreCase("reload")) {
+            saveDefaultConfig();
             reloadConfig();
             this.world = getConfig().getStringList("world");
             this.unClearDexID = getConfig().getIntegerList("unClearDexID");
@@ -65,7 +65,6 @@ public abstract class PokeClear<SPECIES, POKEMON, POKE_ENTITY> extends JavaPlugi
                 this.waitClear.load();
             }
             sender.sendMessage("重载完成");
-            Bukkit.getScheduler().runTaskAsynchronously(this, AD::new);
         }
         if (sender.isOp() && args.length == 1 && args[0].equalsIgnoreCase("clear")) {
             PokeClearAPI<SPECIES, POKEMON, POKE_ENTITY> api = this.getApi();

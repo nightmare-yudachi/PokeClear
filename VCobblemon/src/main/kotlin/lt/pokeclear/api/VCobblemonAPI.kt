@@ -7,15 +7,10 @@ import com.cobblemon.mod.common.pokemon.Pokemon
 import com.cobblemon.mod.common.pokemon.Species
 import lt.pokeclear.common.api.PokeClearAPI
 import me.fullidle.ficore.ficore.common.SomeMethod
-import net.minecraft.world.entity.LivingEntity
 import org.bukkit.Bukkit
 import org.bukkit.entity.Entity
 import java.lang.reflect.Method
 import java.util.*
-import kotlin.reflect.KClass
-import kotlin.reflect.KFunction
-import kotlin.reflect.full.declaredMemberFunctions
-import kotlin.reflect.jvm.isAccessible
 
 object VCobblemonAPI : PokeClearAPI<Species, Pokemon, PokemonEntity>() {
     override fun allSpecies(): Array<Species> {
