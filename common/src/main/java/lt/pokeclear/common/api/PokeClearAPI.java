@@ -8,6 +8,7 @@ public abstract class PokeClearAPI<SPECIES,POKEMON,POKE_ENTITY> {
     public abstract SPECIES[] allSpecies();
     public abstract boolean isUltraBeast(SPECIES species);
     public abstract boolean isLegendary(SPECIES species);
+    public abstract boolean isMythical(SPECIES species);
     public abstract String speciesName(SPECIES species);
     public abstract boolean isPokeEntity(Entity entity);
     public abstract POKE_ENTITY getPokeEntity(Entity entity);

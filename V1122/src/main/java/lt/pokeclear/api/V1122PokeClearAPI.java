@@ -12,6 +12,8 @@ import org.bukkit.entity.Entity;
 import java.util.UUID;
 
 public final class V1122PokeClearAPI extends PokeClearAPI<EnumSpecies, Pokemon, EntityPixelmon> {
+    public static boolean mythicalTip = true;
+
     public static final V1122PokeClearAPI INSTANCE = new V1122PokeClearAPI();
 
     private V1122PokeClearAPI(){
@@ -29,6 +31,12 @@ public final class V1122PokeClearAPI extends PokeClearAPI<EnumSpecies, Pokemon, 
 
     @Override
     public boolean isLegendary(EnumSpecies species) {
+        return species.isLegendary();
+    }
+
+    @Override
+    public boolean isMythical(EnumSpecies species) {
+        if (mythicalTip) Bukkit.getConsoleSender().sendMessage("1.12.2没有幻兽标签奥!");
         return species.isLegendary();
     }
 

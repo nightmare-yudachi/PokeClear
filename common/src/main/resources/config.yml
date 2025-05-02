@@ -21,6 +21,8 @@ normal:
   time: 130
   # 是否清理神兽
   le: false
+  # 是否清理幻兽(1.12.2用不到)
+  mythical: false
   # 是否清理异兽
   ul: false
   # 是否清理闪光
@@ -45,6 +47,8 @@ wait:
   clear:
     # 是否清理神兽
     le: false
+    # 是否清理幻兽(1.12.2用不到)
+    mythical: false
     # 是否清理异兽
     ul: false
     # 是否清理闪光

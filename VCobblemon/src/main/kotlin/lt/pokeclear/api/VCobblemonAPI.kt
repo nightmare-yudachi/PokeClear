@@ -73,6 +73,10 @@ object VCobblemonAPI : PokeClearAPI<Species, Pokemon, PokemonEntity>() {
         return species.labels.contains(CobblemonPokemonLabels.LEGENDARY)
     }
 
+    override fun isMythical(species: Species): Boolean {
+        return species.labels.contains(CobblemonPokemonLabels.MYTHICAL)
+    }
+
     override fun isUltraBeast(species: Species): Boolean {
         return species.labels.contains(CobblemonPokemonLabels.ULTRA_BEAST)
     }

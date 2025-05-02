@@ -16,6 +16,8 @@ public class NormalClear<SPECIES, POKEMON, POKE_ENTITY> {
 
     boolean le;
 
+    boolean mythical;
+
     boolean ul;
 
     boolean shiny;
@@ -47,6 +49,7 @@ public class NormalClear<SPECIES, POKEMON, POKE_ENTITY> {
     public void load() {
         this.time = this.INSTANCE.getConfig().getInt("normal.time");
         this.le = this.INSTANCE.getConfig().getBoolean("normal.le");
+        this.mythical = this.INSTANCE.getConfig().getBoolean("normal.mythical");
         this.ul = this.INSTANCE.getConfig().getBoolean("normal.ul");
         this.shiny = this.INSTANCE.getConfig().getBoolean("normal.shiny");
         this.boss = this.INSTANCE.getConfig().getBoolean("normal.boss");
@@ -77,6 +80,8 @@ public class NormalClear<SPECIES, POKEMON, POKE_ENTITY> {
                     if (!this.ul && this.INSTANCE.ultrabeasts.contains(speciesName))
                         continue;
                     if (!this.le && this.INSTANCE.legendaries.contains(speciesName))
+                        continue;
+                    if (!this.mythical && this.INSTANCE.myths.contains(speciesName))
                         continue;
                     if (!this.shiny && api.isShiny(pokeData))
                         continue;

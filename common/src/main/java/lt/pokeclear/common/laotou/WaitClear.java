@@ -21,6 +21,8 @@ public class WaitClear<SPECIES, POKEMON, POKE_ENTITY> {
 
     boolean ul;
 
+    boolean mythical;
+
     boolean shiny;
 
     boolean boss;
@@ -48,6 +50,8 @@ public class WaitClear<SPECIES, POKEMON, POKE_ENTITY> {
             if (!this.shiny && api.isShiny(pokeData))
                 return;
             if (!this.le && this.INSTANCE.legendaries.contains(speciesName))
+                return;
+            if (!this.mythical && this.INSTANCE.myths.contains(speciesName))
                 return;
             if (!this.ul && this.INSTANCE.ultrabeasts.contains(speciesName))
                 return;
@@ -86,6 +90,8 @@ public class WaitClear<SPECIES, POKEMON, POKE_ENTITY> {
                         continue;
                     if (!this.le && INSTANCE.legendaries.contains(speciesName))
                         continue;
+                    if (!this.mythical && INSTANCE.myths.contains(speciesName))
+                        continue;
                     if (!this.shiny && api.isShiny(pokeData))
                         continue;
                     if (!this.boss && api.isBossPokeEntity(pokeEntity))
@@ -106,6 +112,7 @@ public class WaitClear<SPECIES, POKEMON, POKE_ENTITY> {
         this.time_ = this.INSTANCE.getConfig().getInt("wait.time.cycle");
         this.wait = this.INSTANCE.getConfig().getInt("wait.time.wait");
         this.le = this.INSTANCE.getConfig().getBoolean("wait.le");
+        this.mythical = this.INSTANCE.getConfig().getBoolean("wait.mythical");
         this.ul = this.INSTANCE.getConfig().getBoolean("wait.ul");
         this.shiny = this.INSTANCE.getConfig().getBoolean("wait.shiny");
         this.boss = this.INSTANCE.getConfig().getBoolean("wait.boss");

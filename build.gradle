@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'lt.pokeclear.Main'
-version = '1.7.2-REMASTERED'
+version = '1.7.3-REMASTERED'
 
 
 subprojects {

@@ -26,6 +26,8 @@ public abstract class PokeClear<SPECIES, POKEMON, POKE_ENTITY> extends JavaPlugi
 
     public List<String> ultrabeasts = new ArrayList<>();
 
+    public List<String> myths = new ArrayList<>();
+
     public abstract PokeClearAPI<SPECIES, POKEMON, POKE_ENTITY> getApi();
 
     public PokeClear(){
@@ -49,6 +51,9 @@ public abstract class PokeClear<SPECIES, POKEMON, POKE_ENTITY> extends JavaPlugi
             }
             if (this.getApi().isLegendary(value)) {
                 this.legendaries.add(this.getApi().speciesName(value));
+            }
+            if (this.getApi().isMythical(value)) {
+                this.myths.add(this.getApi().speciesName(value));
             }
         }
     }

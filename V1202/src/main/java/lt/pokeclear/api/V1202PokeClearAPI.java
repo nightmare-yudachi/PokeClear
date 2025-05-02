@@ -34,6 +34,11 @@ public final class V1202PokeClearAPI extends PokeClearAPI<Species, Pokemon, Pixe
     }
 
     @Override
+    public boolean isMythical(Species species) {
+        return species.isMythical();
+    }
+
+    @Override
     public String speciesName(Species species) {
         return species.getName();
     }
