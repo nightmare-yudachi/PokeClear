@@ -41,11 +41,11 @@ subprojects {
     }
 
     kotlin {
-        jvmToolchain(17)
+        jvmToolchain(21)
     }
 
     java {
-        sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = targetCompatibility = JavaVersion.VERSION_21
     }
 
 
