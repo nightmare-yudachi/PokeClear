@@ -1,6 +1,7 @@
 name: ${rootProject.name}
 main: ${rootProject.group}
 version: ${rootProject.version}
+api-version: 1.20
 depend:
   - FICore
 commands:

@@ -1,0 +1,4 @@
+dependencies {
+    modCompileOnly("com.pixelmonmod.pixelmon:Pixelmon:1.21.1-9.3.0")
+
+}

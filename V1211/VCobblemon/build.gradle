@@ -1,0 +1,3 @@
+dependencies {
+    modCompileOnly("com.cobblemon:mod:1.6.1+1.21.1")
+}
