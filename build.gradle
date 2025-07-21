@@ -18,7 +18,7 @@ subprojects {
         }
         maven {
             allowInsecureProtocol = true
-            url "http://server.pokemtd.top:31647/snapshots"
+            url "http://qiyuan.figsq.top:31647/snapshots"
         }
         maven {
             url = 'https://repo.minebench.de/'

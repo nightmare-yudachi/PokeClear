@@ -6,6 +6,7 @@ import com.pixelmonmod.pixelmon.api.pokemon.species.Species;
 import com.pixelmonmod.pixelmon.entities.pixelmon.PixelmonEntity;
 import lt.pokeclear.common.laotou.PokeClear;
 import me.fullidle.ficore.ficore.common.api.event.ForgeEvent;
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import pokeclear.api.V1211PokeClearAPI;
